@@ -25,5 +25,5 @@ class UNet(nn.Module):
         emb = t * emb.unsqueeze(0)
         return torch.cat([torch.sin(emb), torch.cos(emb)], dim=-1)
 
-    def forward(self, x_0: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
+    def forward(self, x_t: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
         t_embedding = self.get_time_embedding(t)
