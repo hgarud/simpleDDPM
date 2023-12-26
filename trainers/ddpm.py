@@ -4,6 +4,7 @@ import torch
 
 class DDPMTrainer():
     def __init__(self, num_time_steps: int):
+        self.num_time_steps = num_time_steps
         self.betas = self.set_variance_schedule()
         self.alphas = 1.0 - self.betas
         self.alpha_cumprod = self.alphas.cumprod(dim=1)
