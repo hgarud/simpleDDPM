@@ -9,8 +9,8 @@ ALL_DATASETS = {
 }
 
 
-def get_dataset(name: str, root: str, train: bool) -> torch.utils.data.Dataset:
+def get_dataset(name: str, root: str, batch_size: int, train: bool) -> torch.utils.data.Dataset:
     """Return the dataset corresponding to the given name."""
     if name not in ALL_DATASETS:
         raise ValueError(f"Unknown dataset: {name}")
-    return ALL_DATASETS[name](root, train)
+    return ALL_DATASETS[name](root, batch_size, train)

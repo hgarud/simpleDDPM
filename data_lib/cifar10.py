@@ -4,7 +4,7 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 
-def get_dataset(root: str, train: bool) -> torch.utils.data.Dataset:
+def get_dataset(root: str, batch_size: int, train: bool) -> torch.utils.data.Dataset:
     # Define the transformation to apply to the dataset
     transform = transforms.Compose([
         transforms.ToTensor(),
@@ -15,7 +15,7 @@ def get_dataset(root: str, train: bool) -> torch.utils.data.Dataset:
     dataset = torchvision.datasets.CIFAR10(root=root,
                                             train=train,
                                             transform=transform)
-    dataloader = torch.utils.data.DataLoader(dataset, batch_size=4,
+    dataloader = torch.utils.data.DataLoader(dataset, batch_size=batch_size,
                                             shuffle=(train==True), num_workers=2)
 
     return dataloader
